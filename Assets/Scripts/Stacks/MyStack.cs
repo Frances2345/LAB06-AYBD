@@ -9,7 +9,7 @@ public class MyStack<T> //->strings
     private int count;
     #endregion
     #region Public Methods
-    public void Push(T value)
+    public virtual void Push(T value)
     {
         StackNode<T> newNode = new StackNode<T>(value);
         //->pila vacia
@@ -24,7 +24,7 @@ public class MyStack<T> //->strings
         top = newNode;
     }
 
-    public T Pop()
+    public virtual T Pop()
     {
         if (top == null) 
             throw new System.Exception("Trying to pop a empty stack");
@@ -37,7 +37,7 @@ public class MyStack<T> //->strings
 
         return tempValue;
     }
-    public T Peek()//-> +1  Jeremy , arribasplata, traviz 
+    public virtual T Peek()//-> +1  Jeremy , arribasplata, traviz 
     {
         if (top == null)
             throw new System.Exception("Trying to peek a empty stack");
@@ -47,7 +47,7 @@ public class MyStack<T> //->strings
     }
 
 
-    public void Clear()//+1  coretin, juan diego, guerrero erwin !
+    public virtual void Clear()//+1  coretin, juan diego, guerrero erwin !
     {
         top = null;
         count = 0;

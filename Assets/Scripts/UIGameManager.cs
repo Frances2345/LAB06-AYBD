@@ -80,4 +80,22 @@ public class UIGameManager : MonoBehaviour
     [Button]
     public void Count() => Debug.Log(wmanager.Count);
 
+    public void BtnCloseCurrent()
+    {
+        if(wmanager.Count >  0)
+        {
+            wmanager.Pop();
+        }
+    }
+
+    public void BtnCloseAll()
+    {
+        while (wmanager.Count > 0)
+        {
+            wmanager.Pop();
+        }
+
+        Debug.Log("Se cerraron todas la ventanas");
+    }
+
 }

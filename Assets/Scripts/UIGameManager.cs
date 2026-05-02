@@ -34,21 +34,37 @@ public class UIGameManager : MonoBehaviour
     }
     private void OnElementAdded(Window window)
     {
+        if(window.window != null)
+        {
+            window.window.SetActive(true);
+            Debug.Log("Se abrio la ventana: " + window.window.name);
+        }
 
-        //->leo el contenido , lo activo y lo pongo al frente
     }
     private void OnElementRemoved(Window window)
     {
-        //->desactivo el panel y lo mando al final
+        if (window.window != null)
+        {
+            window.window.SetActive(false);
+            Debug.Log("Se cerro la ventana: " + window.window.name);
+        }
     }
 
     private void HideCurrentPanel(InputAction.CallbackContext context)
     {
-        //->pop
-        //-> verifico si la window de este pop esta activada o desactvida
-        //-> si esta activa funciono normalmente
-        //-> si ya esta desactivada hago una llamada recursiva haciendo pop hasta que encuentro uno que pueda desactivar
-        Debug.Log("Escape");
+        if (wmanager.Count == 0) return;
+
+        Window window = wmanager.Pop();
+
+        if (window.window != null && window.window.activeSelf)
+        {
+            Debug.Log("Cerrando la Pestaña: " + window.window.name);
+        }
+        else
+        {
+            HideCurrentPanel(context);
+        }
+
     }
 
     public void BtnOpenPanel(GameObject panel)

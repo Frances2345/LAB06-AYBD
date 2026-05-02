@@ -6,6 +6,7 @@ public class StackNode<T>
     #region Privates
     private T value;
     private StackNode<T> next;
+    private StackNode<T> prev;
     #endregion
     #region Constructor
     public StackNode(T value)

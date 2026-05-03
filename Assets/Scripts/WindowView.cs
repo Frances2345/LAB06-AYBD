@@ -12,10 +12,15 @@ public class WindowView : MonoBehaviour
     public TextMeshProUGUI txtLuc;
     public TextMeshProUGUI txtPts;
 
-    public TextMeshProUGUI txtBodyText;
+    public TextMeshProUGUI[] missionTexts;
+
+    public TextMeshProUGUI[] itemTexts;
+
 
     public void Setup(ScriptableObject data)
     {
+        if (data == null) return;
+
         if(data is StatsDataSO s)
         {
             txtLife.text = "LIFE: " + s.life;
@@ -29,11 +34,33 @@ public class WindowView : MonoBehaviour
         }
         else if (data is MissionsDataSO m)
         {
-            txtBodyText.text = m.content;
+            for (int i = 0; i < missionTexts.Length; i++)
+            {
+                if (i < m.missionList.Count)
+                {
+                    missionTexts[i].text = (i + 1) + ". " + m.missionList[i];
+                }
+                else
+                {
+                    missionTexts[i].text = "";
+                }
+            }
+
+
         }
-        else if (data is InventoryDataSO i)
+        else if (data is InventoryDataSO inv)
         {
-            txtBodyText.text = i.itemsList;
+            for (int i = 0; i < itemTexts.Length; i++)
+            {
+                if (i < inv.itemsList.Count)
+                {
+                    itemTexts[i].text = "- " + inv.itemsList[i];
+                }
+                else
+                {
+                    itemTexts[i].text = "---";
+                }
+            }
         }
     }
 

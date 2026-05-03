@@ -56,21 +56,28 @@ public class UIGameManager : MonoBehaviour
 
         Window window = wmanager.Pop();
 
-        if (window.window != null && window.window.activeSelf)
+        if (window.window != null)
         {
             Debug.Log("Cerrando la Pestaña: " + window.window.name);
         }
-        else
-        {
-            HideCurrentPanel(context);
-        }
-
     }
 
-    public void BtnOpenPanel(GameObject panel)
+    public void BtnOpenPanel(GameObject panel, ScriptableObject data)
     {
         Window window = new(panel);
         wmanager.Push(window);
+
+        WindowView view = panel.GetComponent<WindowView>();
+
+        if (view != null && data != null)
+        {
+            view.Setup(data);
+        }
+        else
+        {
+            Debug.Log("Panel sin WindowView");
+        }
+
     }
     [Button]
     public void PeekFromStack()

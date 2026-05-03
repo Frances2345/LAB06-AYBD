@@ -6,6 +6,15 @@ using UnityEngine.InputSystem;
 
 public class UIGameManager : MonoBehaviour
 {
+    public GameObject panelStats;
+    public GameObject panelInventory;
+    public GameObject panelMissions;
+    public GameObject panelMap;
+
+    public ScriptableObject statsData;
+    public ScriptableObject inventoryData;
+    public ScriptableObject missionsData;
+
     public InputSystem_Actions inputs;
     public WindowManager wmanager = new();
 
@@ -23,15 +32,53 @@ public class UIGameManager : MonoBehaviour
         wmanager.OnElementRemoved += OnElementRemoved;
     }
 
-
-    void Start()
+    public void OpenStats()
     {
+        BtnOpenPanel(panelStats, statsData);
+    }
+
+    public void OpenInventory()
+    {
+        BtnOpenPanel(panelInventory, inventoryData);
+    }
+
+    public void OpenMap()
+    {
+        BtnOpenPanel(panelMap, null);
+    }
+
+    public void OpenMissions()
+    {
+        BtnOpenPanel(panelMissions, missionsData);
+    }
+
+    public void BtnOpenPanel(GameObject panel, ScriptableObject data)
+    {
+        if (panel == null) return;
+
+        //panel.transform.SetAsLastSibling();
+
+        if (panel.transform.parent != null)
+        {
+            panel.transform.parent.SetAsLastSibling();
+        }
+        else
+        {
+            panel.transform.SetAsLastSibling();
+        }
+
+        Window window = new(panel);
+        wmanager.Push(window);
+
+        WindowView view = panel.GetComponent<WindowView>();
+
+        if (view != null && data != null)
+        {
+            view.Setup(data);
+        }
 
     }
-    void Update()
-    {
 
-    }
     private void OnElementAdded(Window window)
     {
         if(window.window != null)
@@ -52,39 +99,14 @@ public class UIGameManager : MonoBehaviour
 
     private void HideCurrentPanel(InputAction.CallbackContext context)
     {
-        if (wmanager.Count == 0) return;
-
-        Window window = wmanager.Pop();
-
-        if (window.window != null)
-        {
-            Debug.Log("Cerrando la Pestaña: " + window.window.name);
-        }
+        BtnCloseCurrent();
     }
 
-    public void BtnOpenPanel(GameObject panel, ScriptableObject data)
-    {
-        Window window = new(panel);
-        wmanager.Push(window);
-
-        WindowView view = panel.GetComponent<WindowView>();
-
-        if (view != null && data != null)
-        {
-            view.Setup(data);
-        }
-        else
-        {
-            Debug.Log("Panel sin WindowView");
-        }
-
-    }
-    [Button]
     public void PeekFromStack()
     {
-        Debug.Log(wmanager.Peek().window.name);
+        if (wmanager.Count > 0) Debug.Log(wmanager.Peek().window.name);
     }
-    [Button]
+
     public void Count() => Debug.Log(wmanager.Count);
 
     public void BtnCloseCurrent()

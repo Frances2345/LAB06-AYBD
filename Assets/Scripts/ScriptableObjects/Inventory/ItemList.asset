@@ -10,6 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9c5bd9858db90e42b5f0871262df8ff, type: 3}
-  m_Name: Item 1
+  m_Name: ItemList
   m_EditorClassIdentifier: Assembly-CSharp::InventoryDataSO
-  itemsList: Rodajas de Mango
+  itemsList:
+  - Regla de Humbledore
+  - Flor de la aristocracia
+  - Lentes de la majaderia
+  - Corbata Capullo
+  - Zapatoos de princesa
+  - medias de la edad media
+  - Mochila Invisible
+  - Peinado Punkrocker
+  - Manos de Mono
+  - Camiseta de Pantera rosa

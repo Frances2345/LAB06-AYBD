@@ -10,6 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f250537804dd8741b981bc6a9b206a4, type: 3}
-  m_Name: Mission 1
+  m_Name: Missions
   m_EditorClassIdentifier: Assembly-CSharp::MissionsDataSO
-  content: 'Derribar enmigos Alcoholicos: 3/12'
+  missionList:
+  - Consigue sabiduria
+  - Encuentra 3 Barsinso
+  - Derrota a Socrates
+  - Juega el flipante Final Fantasy VII
+  - Busca un Gnomo de ceniza

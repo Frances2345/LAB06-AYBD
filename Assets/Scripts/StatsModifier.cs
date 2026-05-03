@@ -31,6 +31,11 @@ public class StatsModifier : MonoBehaviour
         AddPoint(ref statsData.life);
     }
 
+    public void UpgradeLvl()
+    {
+        AddPoint(ref statsData.level);
+    }
+
     public void UpgradeStr()
     {
         AddPoint(ref statsData.strength);
@@ -54,6 +59,11 @@ public class StatsModifier : MonoBehaviour
     public void UpgradeLuc()
     {
         AddPoint(ref statsData.luck);
+    }
+
+    public void UpgradeSkp()
+    {
+        AddPoint(ref statsData.skillPoints);
     }
 
     public void DebugResetPoints()

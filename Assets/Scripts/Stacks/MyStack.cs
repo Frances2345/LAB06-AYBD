@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class MyStack<T> //->strings
+public class MyStack<T>
 {
 
     #region Privates
@@ -14,14 +14,12 @@ public class MyStack<T> //->strings
     public virtual void Push(T value)
     {
         StackNode<T> newNode = new StackNode<T>(value);
-        //->pila vacia
         if(top == null)
         {
             top = newNode;
             count++;
             return;
         }
-        //->pila ya tiene un elemtno
         newNode.SetNext(top);
         top = newNode;
         count++;
@@ -48,7 +46,6 @@ public class MyStack<T> //->strings
         return tempValue;
     }
 
-
     public virtual void Clear()
     {
         top = null;
@@ -59,7 +56,4 @@ public class MyStack<T> //->strings
     public StackNode<T> Top => top;
     public int Count => count;
     #endregion
-
-
-
 }

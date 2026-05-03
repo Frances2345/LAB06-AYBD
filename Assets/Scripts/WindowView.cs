@@ -17,7 +17,7 @@ public class WindowView : MonoBehaviour
     public TextMeshProUGUI[] itemTexts;
 
 
-    public void Setup(ScriptableObject data)
+    public virtual void Setup(ScriptableObject data)
     {
         if (data == null) return;
 
@@ -45,8 +45,6 @@ public class WindowView : MonoBehaviour
                     missionTexts[i].text = "";
                 }
             }
-
-
         }
         else if (data is InventoryDataSO inv)
         {

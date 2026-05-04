@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eb7eff023d2c2242ab9c41bb94ca56e, type: 3}
   m_Name: Stats 1
   m_EditorClassIdentifier: Assembly-CSharp::StatsDataSO
-  life: 2023
-  level: 26
-  strength: 591
-  charisma: 47
-  defense: 400
+  life: 2024
+  level: 27
+  strength: 592
+  charisma: 48
+  defense: 403
   speed: 30
   luck: 50
-  skillPoints: 85
+  skillPoints: 79
